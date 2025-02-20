@@ -7,7 +7,6 @@ const personagens = [
         velocidade: "70",
         forca: "70",
         resistencia: "60",
-        media: 0,
         descricao: function(){
             return  "\n" +
                     "Nome do Personagem: " + this.nome + "\n" +
@@ -29,7 +28,6 @@ const personagens = [
         velocidade: "75",
         forca: "80",
         resistencia: "55",
-        media: 0,
         descricao: function(){
             return  "\n" +
                     "Nome do Personagem: " + this.nome + "\n" +
@@ -51,7 +49,6 @@ const personagens = [
         velocidade: "80",
         forca: "55",
         resistencia: "65",
-        media: 0,
         descricao: function(){
             return  "\n" +
                     "Nome do Personagem: " + this.nome + "\n" +
@@ -73,7 +70,6 @@ const personagens = [
         velocidade: "50",
         forca: "95",
         resistencia: "85",
-        media: 0,
         descricao: function(){
             return  "\n" +
                     "Nome do Personagem: " + this.nome + "\n" +
@@ -95,7 +91,6 @@ const personagens = [
         velocidade: "65",
         forca: "65",
         resistencia: "70",
-        media: 0,
         descricao: function(){
             return  "\n" +
                     "Nome do Personagem: " + this.nome + "\n" +
@@ -111,12 +106,12 @@ const personagens = [
     
     {
         nome: "Thanos",
+        nomeHeroi: "Thanos",
         arma1: "Manopla do Infinito",
         arma2: "Sabre",
         velocidade: "45",
         forca: "85",
         resistencia: "95",
-        media: 0,
         descricao: function(){
             return  "\n" +
                     "Nome do Personagem: " + this.nome + "\n" +
@@ -135,17 +130,42 @@ var maiorFor = 0
 var maiorRes = 0
 var maiorMed = 0
 
-var maisVel
-var maisFor
-var maisRes
-var maisMed
+var maisVel = ""
+var maisFor = ""
+var maisRes = ""
+var maisMed = ""
 
 personagens.forEach((persona) => {
     let vel = Number(persona.velocidade)
     let forc = Number(persona.forca)
     let res = Number(persona.resistencia)
-
     let media = (vel + forc + res) / 3
-    persona.media = media
 
+    if(vel > maiorVel){
+        maiorVel = vel
+        maisVel = persona.nomeHeroi
+    }
+
+    if(forc > maiorFor){
+        maiorFor = forc 
+        maisFor = persona.nomeHeroi
+    }
+
+    if(res > maiorRes){
+        maiorRes = res
+        maisRes = persona.nomeHeroi
+    }
+
+    if(media > maiorMed){
+        maiorMed = media
+        maisMed = persona.nomeHeroi
+    }
+
+    console.log(persona.descricao())
 })
+
+console.log("De acordo com meus cálculos...")
+console.log(`O personagem mais Veloz é: ${maisVel}`)
+console.log(`O personagem mais Forte é: ${maisFor}`)
+console.log(`O personagem mais Resistente é: ${maisRes}`)
+console.log(`E o personagem com a maior Média de atributos é: ${maisMed}`)
